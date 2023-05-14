@@ -65,7 +65,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
                 .allowedMethods("GET", "HEAD", "POST", "DELETE", "PUT")
                 .allowedOrigins(properties.getAllowedOrigins().toArray(new String[0]))
                 .allowedHeaders("*")
-                .allowCredentials(true);
+                .allowCredentials(false);
     }
 }
 

@@ -1,11 +1,15 @@
-FROM openjdk:11-jdk-slim
+FROM ubuntu:latest AS build
 
-VOLUME /tmp
+RUN apt-get update
+RUN apt-get install openjdk-11-jdk -y
+COPY . .
+
+RUN ./gradlew bootJar --no-daemon
+
+FROM openjdk:11-jdk-slim
 
 EXPOSE 8080
 
-ARG JAR_FILE=build/libs/*.jar
+COPY --from=build /build/libs/realworld-spring-boot-java-1.jar app.jar
 
-COPY ${JAR_FILE} app.jar
-
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]

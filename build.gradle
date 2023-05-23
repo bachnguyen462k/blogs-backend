@@ -12,6 +12,7 @@ plugins {
 group = 'io.github.raeperd'
 version = '2.1.1'
 sourceCompatibility = '11'
+targetCompatibility = '11'
 
 repositories {
     mavenCentral()

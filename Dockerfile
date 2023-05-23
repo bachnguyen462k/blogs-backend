@@ -1,6 +1,4 @@
-FROM openjdk:11-jdk-slim
-
-VOLUME /tmp
+FROM gradle:8.1.1-jdk11 as build
 
 EXPOSE 8080
 
